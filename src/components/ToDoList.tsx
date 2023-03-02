@@ -1,5 +1,14 @@
 import * as React from "react";
-import { Box, FormControl, Input, Button, Flex, Text } from "@chakra-ui/react";
+import {
+  Box,
+  FormControl,
+  Input,
+  Button,
+  Flex,
+  Text,
+  Icon,
+} from "@chakra-ui/react";
+import DeleteIcon from "@mui/icons-material/Delete";
 
 const ToDoList: React.FC = () => {
   const [task, setTask] = React.useState("");
@@ -31,7 +40,7 @@ const ToDoList: React.FC = () => {
             mt="10px"
           >
             <Text m="auto">{task}</Text>
-            <Button>Delete</Button>
+            <Icon as={DeleteIcon} />
           </Flex>
         ))}
       </Box>
