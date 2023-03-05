@@ -68,7 +68,10 @@ const ToDoList: React.FC = () => {
       >
         <ModalOverlay />
         <ModalContent>
-          <ModalCloseButton />
+          <ModalCloseButton
+            _focusVisible={{ outline: "none" }}
+            _hover={{ bg: "none" }}
+          />
           <ModalBody mt="40px">
             <Text mb="20px">{modalData[step]} </Text>
             <Input />
@@ -101,7 +104,7 @@ const ToDoList: React.FC = () => {
                   setStep(step + 1);
                 }}
               >
-                Next
+                {step === 1 ? "Submit" : "Next"}
               </Button>
             </Flex>
           </ModalBody>
