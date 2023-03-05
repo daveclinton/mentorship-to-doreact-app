@@ -14,6 +14,7 @@ import { Button, Input } from "@chakra-ui/react";
 const ToDoList: React.FC = () => {
   const [isOpen, setIsOpen] = React.useState(false);
   let date = new Date().toUTCString().slice(5, 16);
+  const [step, setStep] = React.useState(0);
 
   const modalData = [
     "What are you planning to do?",
@@ -51,7 +52,10 @@ const ToDoList: React.FC = () => {
               boxSize="50px"
               borderRadius="50%"
               cursor="pointer"
-              onClick={() => setIsOpen(true)}
+              onClick={() => {
+                setIsOpen(true);
+                setStep(0);
+              }}
             />
           </Flex>
         </Flex>
@@ -66,7 +70,7 @@ const ToDoList: React.FC = () => {
         <ModalContent>
           <ModalCloseButton />
           <ModalBody mt="40px">
-            <Text mb="20px">{modalData[1]} </Text>
+            <Text mb="20px">{modalData[step]} </Text>
             <Input />
             <Flex justify="space-between" mt="30px">
               <Button
@@ -75,6 +79,7 @@ const ToDoList: React.FC = () => {
                 borderRadius="8px"
                 color="#0d0c22"
                 boxSizing="border-box"
+                display={step === 0 ? "none" : "block"}
                 fontWeight={500}
                 _hover={{ bg: "#f3f3f4" }}
                 fontSize="14px"
@@ -85,13 +90,17 @@ const ToDoList: React.FC = () => {
                 borderRadius="8px"
                 color="#fff"
                 bg="#ea4c89"
+                float="right"
                 boxSizing="border-box"
                 fontWeight={500}
                 fontSize="14px"
                 h="40px"
                 _hover={{ bg: "#ea4c89" }}
+                onClick={() => {
+                  setStep(step + 1);
+                }}
               >
-                Plan
+                Next
               </Button>
             </Flex>
           </ModalBody>
