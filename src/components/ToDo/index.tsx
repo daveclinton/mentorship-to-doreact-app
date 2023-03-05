@@ -16,7 +16,7 @@ const ToDoList: React.FC = () => {
   let date = new Date().toUTCString().slice(5, 16);
   const [step, setStep] = React.useState(0);
 
-  const modalData = [
+  const modalData: Array<string> = [
     "What are you planning to do?",
     "When are you planning to do this",
   ];
@@ -83,6 +83,7 @@ const ToDoList: React.FC = () => {
                 fontWeight={500}
                 _hover={{ bg: "#f3f3f4" }}
                 fontSize="14px"
+                onClick={() => setIsOpen(false)}
               >
                 Discard
               </Button>
